@@ -8,6 +8,11 @@ src="https://img.shields.io/badge/Programmer-Raul-blue?style=for-the-badge&logo=
 
 ![](https://badges.pufler.dev/visits/RaulXH/ShortXH?style=flat-square&logo=Github) ![](https://img.shields.io/github/license/RaulXH/ShortXH?style=flat-square&logo=Github) ![](https://img.shields.io/github/stars/RaulXH/ShortXH?style=flat-square&logo=Github) 
 #
+# Commans installation
+```
+git clone https://github.com/RaulXH/ShortXH && cd ShortXH
+chmod +x ShortXH && ./ShortXH
+```
 # Create a bitly account for token access
 Youtube:
 ```
