@@ -15,7 +15,7 @@ chmod +x ShortXH && ./ShortXH
 ```
 # Boot from the PATH
 ```
-wget https://git.io/JB84e -O $PREFIX/bin/ShortXH
+wget https://git.io/JB84e -O $PREFIX/bin/ShortXH && chmod +x $PREFIX/bin/ShortXH
 
 ShortXH -h
 ```
