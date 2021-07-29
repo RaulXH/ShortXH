@@ -51,7 +51,7 @@ declare -r XBLUE='\e[7;50;34m'
 #
 #		AUTOTHOKEN
 #
-TOKEN='5b78114c20712ddc5a5601e1535a3d8e20cac25c'
+TOKEN=''
 #
 #
 #
