@@ -1,0 +1,190 @@
+#!/data/data/com.termux/files/usr/bin/bash 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#	Programmed by RaulXH
+#
+#
+#
+#
+#	[ 28 | 07 | 2021 ] [ Panamá ]
+#
+#
+#
+#
+#
+#
+#	[ SCRIPT ORIGINAL FOR TERMUX ]
+#
+#
+#
+#
+#
+#	[ Credit https://github.com/RaulXH ]
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# Colores
+declare -r RED='\e[0;50;31m'
+declare -r GREEN='\e[0;50;32m'
+declare -r BLUE='\e[0;50;34m'
+declare -r WHITE='\e[1;50;37m'
+declare -r XRED='\e[7;107;31m'
+declare -r FORT='\e[0m'
+declare -r YELOW='\e[0;50;33m'
+declare -r XYELOW='\e[7;50;33m'
+declare -r XBLUE='\e[7;50;34m'
+#
+#
+#
+#		AUTOTHOKEN
+#
+TOKEN='5b78114c20712ddc5a5601e1535a3d8e20cac25c'
+#
+#
+#
+#
+[[ $(type -P jq) ]] &&  [[ $(type -P curl) ]] || pkg install jq curl -y 
+[[ -f $PREFIX/bin/"$(basename $0)" ]] && FILE="$(basename $0)" || FILE="$0"
+#
+#
+short1()
+{
+	local -r Accesstoken=$TOKEN
+	local -r NAMEFILE=$2
+	local -r api=https://api-ssl.bitly.com/v4/shorten
+	# Inicio
+	if [[ -z $TOKEN ]]
+	then
+		printf ""
+		printf "\n${RED}[✘] ${WHITE}There is no authtoken access\n${RED}[✘] ${WHITE}Authenticate in: ${GREEN}https://bitly.com/\n\n${FORT}" && return 0
+
+	else
+		printf "\n${XYELOW}  Shorten URL bitly  ${FORT}\n"
+	# is.gd
+	SHORT2=$(curl -s -H Authorization:\ $Accesstoken -H Content-Type: -d '{"long_url": "'"$1"\"} $api | jq -j .link )
+	# Url Generada
+	Bitly=$(sed "s/bit*/$NAMEFILE@&/" <<< $SHORT2)
+	# Output of url
+	#
+	#
+	printf "\n${BLUE}[${YELOW}${BLUE}]${WHITE} Your url: ${GREEN}${Bitly}${FORT}\n\n"
+	#
+	#
+	fi
+	}
+short_2()
+{
+	#
+	# Inicio
+	#
+	printf "\n${XBLUE}  Shorten URL Is.gd  ${FORT}\n"
+	NAMEFILE=$2
+	SHORT1=$(curl -s  "https://is.gd/create.php?format=simple&url=$1")
+	ISGD=$(sed "s/is*/$NAMEFILE@&/" <<< $SHORT1)
+	printf "\n${BLUE}[${GREEN}${BLUE}]${WHITE} Your url: ${YELOW}$ISGD${FORT}\n\n"
+}
+HELP()
+{
+	C=$(stty size | awk '{print $NF}')
+	local -r W='\e[0;50;37m'
+for i in $(seq  $C); do echo -n "-";done
+printf "\n${BLUE}Options:\n${WHITE}%-3s ${GREEN}: ${YELOW}Use a social engineering word" '-n'
+printf "\n${WHITE}%-3s ${GREEN}: ${YELOW}Bitly shortener ${RED}(token)" '-b'
+printf "\n${WHITE}%-3s ${GREEN}: ${YELOW}Is.gd Shortener${FORT}\n" '-i'
+printf "
+${GREEN}  File  -  option1 - option2 
+${WHITE}   |	      |	        |
+   v	      v	        v
+
+${YELOW}$FILE  ${WHITE}-n ${YELOW}'Hello'  ${WHITE}-i ${YELOW}'https://shorturl..'${FORT}
+"
+for i in $(seq  $C); do echo -n "-";done
+}
+Banner()
+{
+printf "
+${GREEN}
+ _____ _           _   ${YELOW}__ __ _____${GREEN}
+|   __| |_ ___ ___| |_${YELOW}|  |  |  |  |${GREEN}
+|__   |   | . |  _|  _${YELOW}|-   -| v.1 |${GREEN}
+|_____|_|_|___|_| |_| ${YELOW}|__|__|__|__|${GREEN}
+$FORT
+"
+}
+[[ $# -le 1 ]] && Banner && HELP
+#
+# variables de opciones
+#
+while getopts ':n:i:b:x:' OPTION
+do
+	case $OPTION in
+		n)
+			[[ $# -gt 4 ]] && shift
+			NAME=$(tr ' ' '-' <<< $OPTARG)
+			;;
+		b)
+			#
+			# Bitly
+			#
+			[[ -z $OPTARG ]] || [[ -z $NAME ]] && HELP && exit 1
+			Banner
+			URL="$OPTARG"
+			short1 $URL "$NAME"
+			;;
+		i)
+			#
+			# is.gd
+			#
+			[[ -z $OPTARG ]] || [[ -z $NAME ]] && HELP && exit 1
+			Banner
+			URL="${OPTARG}"
+			short_2 $URL "${NAME}"
+			;;
+		x)
+			
+			# ambos
+			#
+			[[ -z $OPTARG ]] || [[ -z $NAME ]] && HELP && exit 1
+			Banner
+			URL="${OPTARG}"
+			short1 $URL $NAME 
+			short_2 $URL $NAME
+			;;
+		*)
+			printf "\n${RED}[x] ${WHITE}Error Option ${RED}[x]${FORT}\n\n"
+			HELP
+			;;
+		esac
+
+	
+done
+shift $(($OPTIND - 1))
+#
+#
+#
+#
+#
+#
+#
+#		Programmed RaulXH
+#
+#
+#
+#
+#
+#
+#
+#		Termux Ethical
