@@ -7,6 +7,9 @@ src="https://img.shields.io/badge/Programmer-Raul-blue?style=for-the-badge&logo=
 
 
 ![](https://badges.pufler.dev/visits/RaulXH/ShortXH?style=flat-square&logo=Github) ![](https://img.shields.io/github/license/RaulXH/ShortXH?style=flat-square&logo=Github) ![](https://img.shields.io/github/stars/RaulXH/ShortXH?style=flat-square&logo=Github) 
+#
+# Create a bitly account for token access
+![](https://youtu.be/OAtqgZuLQR4)
 # Demostration
 #
 <a href="https://asciinema.org/a/A4zYxmn6JD9LpbTcibUbhxGfX" target="_blank"><img src="https://asciinema.org/a/A4zYxmn6JD9LpbTcibUbhxGfX.svg" /></a>
