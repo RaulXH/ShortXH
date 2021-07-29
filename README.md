@@ -13,6 +13,12 @@ src="https://img.shields.io/badge/Programmer-Raul-blue?style=for-the-badge&logo=
 git clone https://github.com/RaulXH/ShortXH && cd ShortXH
 chmod +x ShortXH && ./ShortXH
 ```
+# Boot from the PATH
+```
+wget https://git.io/JB84e -O $PREFIX/bin/ShortXH
+
+ShortXH -h
+```
 # Create a bitly account for token access
 Youtube:
 ```
