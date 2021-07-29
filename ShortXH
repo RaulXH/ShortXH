@@ -124,7 +124,7 @@ ${GREEN}
 $FORT
 "
 }
-[[ $# -le 1 ]] && Banner && HELP
+[[ $# -le 1 ]] && Banner && HELP && exit 0
 #
 # variables de opciones
 #
