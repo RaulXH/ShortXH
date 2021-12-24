@@ -98,13 +98,15 @@ short_2()
 }
 HELP()
 {
+	[[ -n $TOKEN ]] && FF='\e[7;50;32m[ Token Active ]\e[0m' || FF='\e[7;50;91m[ Token is not Active ]\e[0m'
 	C=$(stty size | awk '{print $NF}')
 	local -r W='\e[0;50;37m'
 for i in $(seq  $C); do echo -n "-";done
 printf "\n${BLUE}Options:\n${WHITE}%-3s ${GREEN}: ${YELOW}Use a social engineering word" '-n'
-printf "\n${WHITE}%-3s ${GREEN}: ${YELOW}Bitly shortener ${RED}(token)" '-b'
+printf "\n${WHITE}%-3s ${GREEN}: ${YELOW}Bitly shortener ${RED}${FF}" '-b'
 printf "\n${WHITE}%-3s ${GREEN}: ${YELOW}Is.gd Shortener${FORT}\n" '-i'
 printf "
+\e[1;103;90mExample:\e[0m\n
 ${GREEN}  File  -  option1 - option2 
 ${WHITE}   |	      |	        |
    v	      v	        v
